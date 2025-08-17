@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+if [ -z "$(snapctl get nats.url)" ]; then
+	snapctl set nats.url="nats://iotbox.net:4222";
+fi
+
+snapctl restart "$SNAP_INSTANCE_NAME"

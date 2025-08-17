@@ -1,0 +1,29 @@
+name: iotbox-heartbeat
+summary: IoTBox Heartbeat Service
+description: IoTBox Heartbeat Service
+version: git
+
+base: core24
+confinement: strict
+grade: stable
+
+platforms:
+  amd64:
+  arm64:
+  armhf:
+
+apps:
+  daemon:
+    command: bin/heartbeat.sh
+    daemon: simple
+    restart-condition: always
+    restart-delay: 60s
+    plugs: [network]
+  heartbeat:
+    command: bin/heartbeat.sh
+    plugs: [network]
+
+parts:
+  overlay:
+    plugin: dump
+    source: overlay
