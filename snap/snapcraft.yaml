@@ -24,6 +24,15 @@ apps:
     plugs: [network]
 
 parts:
+  cli:
+    plugin: go
+    source: https://github.com/nats-io/natscli.git
+    source-tag: v0.2.4
+    build-snaps:
+      - go
+    override-pull: |
+      craftctl default
+      rm -rf nats/tests
   overlay:
     plugin: dump
     source: overlay
