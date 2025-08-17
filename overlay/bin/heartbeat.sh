@@ -7,6 +7,6 @@ while true; do
   FQDN=$(hostname -f)
   ADDRESSES=$(hostname -I)
   MSG={\"timestamp\":\"$TS\",\"machine_id\":\"$MACHINE_ID\",\"hostname\":\"$HOSTNAME\",\"fqdn\":\"$FQDN\",\"addresses\":\"$ADDRESSES\"}
-  nats pub iotbox.heartbeat.$MACHINE_ID $MSG
+  nats pub iotbox.heartbeat.$MACHINE_ID "$MSG"
   sleep 10
 done
